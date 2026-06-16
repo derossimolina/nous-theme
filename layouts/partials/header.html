@@ -1,6 +1,6 @@
 <header class="site-header">
   <div class="site-wrap">
-    <a class="site-title" href="/">{{ .Site.Title }}</a>
+    <a class="site-title" href="/">{{ .Site.Params.shortTitle | default .Site.Title }}</a>
     <nav>
       <ul class="site-nav">
         {{ range .Site.Menus.main }}
