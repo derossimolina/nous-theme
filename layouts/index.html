@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>{{ partial "head.html" . }}</head>
+<body>
+  {{ partial "header.html" . }}
+  <main class="site-wrap">
+    <div class="home-intro">
+      <h1>{{ .Site.Params.homeTitle | default .Site.Title }}</h1>
+      <p>{{ .Site.Params.homeContent | default .Site.Params.description }}</p>
+    </div>
+    <ul class="post-list">
+      {{ range where .Site.RegularPages "Section" "posts" }}
+      {{ if not .Draft }}
+      <li class="post-list-item">
+        <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
+        <a class="post-title-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
+      </li>
+      {{ end }}
+      {{ end }}
+    </ul>
+  </main>
+  {{ partial "footer.html" . }}
+</body>
+</html>
