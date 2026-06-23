@@ -64,7 +64,7 @@ a:hover { color: var(--bright); }
 }
 
 .site-title {
-  font-size: 0.82rem;
+  font-size: 1.25rem;
   font-weight: 500;
   letter-spacing: 0.08em;
   text-transform: lowercase;
@@ -78,7 +78,7 @@ a:hover { color: var(--bright); }
 }
 
 .site-nav a {
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   font-weight: 400;
   letter-spacing: 0.07em;
   text-transform: lowercase;
@@ -94,7 +94,7 @@ a:hover { color: var(--bright); }
   border: none;
   color: var(--muted);
   cursor: pointer;
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   font-weight: 400;
   letter-spacing: 0.07em;
   text-transform: lowercase;
@@ -141,7 +141,7 @@ a:hover { color: var(--bright); }
 .post-list-item:first-child { border-top: 1px solid var(--border); }
 
 .post-date {
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   color: var(--muted);
   white-space: nowrap;
   font-variant-numeric: tabular-nums;
@@ -192,12 +192,12 @@ a:hover { color: var(--bright); }
 }
 
 .post-meta {
-  font-size: 0.72rem;
+  font-size: 0.9rem;
   color: var(--muted);
 }
 
 /* ── article body ── */
-.post-content { font-size: 0.9rem; }
+.post-content { font-size: 1.1rem; }
 
 .post-content h2 {
   font-size: 0.95rem;
@@ -262,7 +262,7 @@ a:hover { color: var(--bright); }
   background: none;
   border: none;
   padding: 0;
-  font-size: 0.82rem;
+  font-size: 1.1rem;
 }
 
 /* ── tags ── */
