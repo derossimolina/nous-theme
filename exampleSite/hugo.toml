@@ -1,0 +1,58 @@
+baseURL = "https://example.com/"
+defaultContentLanguage = "pt"
+title = "Nous Example"
+theme = "nous"
+paginate = 10
+
+[params]
+  description = "Um tema tipográfico mínimo para Hugo"
+  shortTitle  = "Nous"
+  homeTitle   = "Nous"
+  homeContent = "Notas, ensaios e reflexões"
+
+[languages]
+  [languages.pt]
+    languageName = "Português"
+    languageCode = "pt-BR"
+    weight = 1
+    [[languages.pt.menu.main]]
+      name   = "postagens"
+      url    = "/posts/"
+      weight = 10
+    [[languages.pt.menu.main]]
+      name   = "ensaios"
+      url    = "/essays/"
+      weight = 20
+    [[languages.pt.menu.main]]
+      name   = "sobre"
+      url    = "/about/"
+      weight = 30
+
+  [languages.en]
+    languageName = "English"
+    languageCode = "en-US"
+    weight = 2
+    [languages.en.params]
+      description = "A minimal, typography-first Hugo theme"
+      homeContent = "Notes, essays and reflections"
+    [[languages.en.menu.main]]
+      name   = "posts"
+      url    = "/posts/"
+      weight = 10
+    [[languages.en.menu.main]]
+      name   = "essays"
+      url    = "/essays/"
+      weight = 20
+    [[languages.en.menu.main]]
+      name   = "about"
+      url    = "/about/"
+      weight = 30
+
+[markup.goldmark.renderer]
+  unsafe = true
+
+[markup.goldmark.extensions.extras.mark]
+  enable = true
+
+[outputs]
+  home = ["HTML", "RSS"]

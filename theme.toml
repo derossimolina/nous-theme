@@ -1,3 +1,11 @@
-name = "nous"
-license = "MIT"
-description = "Minimal dark theme inspired by Nous Research"
+name        = "Nous"
+license     = "MIT"
+licenselink = "https://github.com/derossimolina/nous-theme/blob/main/LICENSE"
+description = "A minimal, typography-first Hugo theme with dark/light modes, multilingual support, cookie consent, and copy attribution."
+homepage    = "https://github.com/derossimolina/nous-theme"
+tags        = ["minimal", "dark", "light", "multilingual", "blog", "personal", "responsive"]
+min_version = "0.120.0"
+
+[author]
+  name     = "J. de Rossi Molina"
+  homepage = "https://derossimolina.github.io/"
