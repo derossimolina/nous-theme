@@ -40,7 +40,7 @@
     var lang = document.documentElement.getAttribute('lang') || 'pt-BR';
     var suffix = lang.startsWith('pt')
       ? ' | Retirado do site de J. de Rossi Molina, todos os direitos reservados'
-      : " | Taken from J. de Rossi Molina’s website, all rights reserved";
+      : ' | Taken from J. de Rossi Molina’s website, all rights reserved';
     e.clipboardData.setData('text/plain', sel.toString() + suffix);
     e.preventDefault();
   });

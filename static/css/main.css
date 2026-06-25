@@ -158,8 +158,8 @@ a:hover { color: var(--bright); }
 
 /* ── page title ── */
 .page-header {
-  margin-bottom: 2rem;
-  padding-bottom: 1.5rem;
+  margin-bottom: 0.5rem;
+  padding-bottom: 0;
 }
 
 .page-title {
@@ -223,6 +223,18 @@ a:hover { color: var(--bright); }
 }
 
 .post-content a:hover { color: var(--bright); }
+
+.post-content mark {
+  background: none;
+  color: #c0392b;
+  font-style: inherit;
+}
+
+.post-content u {
+  text-decoration: underline;
+  text-decoration-color: #c0392b;
+  text-underline-offset: 0.15em;
+}
 
 .post-content ul,
 .post-content ol {
@@ -298,6 +310,61 @@ a:hover { color: var(--bright); }
 /* ── wikilinks ── */
 .internal-link { color: var(--link); }
 .broken-link { color: var(--muted); border-bottom: 1px dashed var(--border); }
+
+/* ── text selection ── */
+::selection {
+  background: #f5e642;
+  color: #000;
+}
+
+[data-theme="light"] ::selection {
+  background: #E8714A;
+  color: #fff;
+}
+
+/* ── cookie bar ── */
+.cookie-bar {
+  position: fixed;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  background: var(--surface);
+  border-top: 1px solid var(--border);
+  padding: 1rem 1.5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 1.25rem;
+  font-size: 0.78rem;
+  color: var(--text);
+  z-index: 9999;
+  transition: transform 0.3s ease;
+}
+
+.cookie-bar.hidden {
+  transform: translateY(100%);
+  pointer-events: none;
+}
+
+.cookie-bar p {
+  margin: 0;
+}
+
+.cookie-bar button {
+  background: var(--bright);
+  color: var(--bg);
+  border: none;
+  padding: 0.35rem 1rem;
+  font-size: 0.75rem;
+  font-family: inherit;
+  cursor: pointer;
+  letter-spacing: 0.04em;
+  white-space: nowrap;
+}
+
+.cookie-bar button:hover {
+  opacity: 0.85;
+}
 
 /* ── responsive ── */
 @media (max-width: 520px) {
