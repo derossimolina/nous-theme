@@ -67,6 +67,7 @@ a:hover { color: var(--bright); }
   font-size: 1rem;
   font-weight: 500;
   letter-spacing: 0.08em;
+  line-height: 1.15;
   text-transform: lowercase;
   color: var(--bright);
 }
@@ -138,7 +139,7 @@ a:hover { color: var(--bright); }
   border-bottom: 1px solid var(--border);
 }
 
-.post-list-item:first-child { border-top: 1px solid var(--border); }
+.post-list:first-child { border-top: none; }
 
 .post-date {
   font-size: 0.9rem;
