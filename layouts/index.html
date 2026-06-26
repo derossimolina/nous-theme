@@ -8,16 +8,31 @@
       <h1>{{ .Site.Params.homeTitle | default .Site.Title }}</h1>
       <p>{{ .Site.Params.homeContent | default .Site.Params.description }}</p>
     </div>
-    <ul class="post-list">
+    <div class="post-cards">
       {{ range where .Site.RegularPages "Section" "posts" }}
       {{ if not .Draft }}
-      <li class="post-list-item">
-        <span class="post-date">{{ .Date.Format "2006-01-02" }}</span>
-        <a class="post-title-link" href="{{ .RelPermalink }}">{{ .Title }}</a>
-      </li>
+      <a class="post-card" href="{{ .RelPermalink }}">
+        {{ with .Params.cover }}
+        <div class="post-card-cover">
+          <img src="{{ .image }}" alt="{{ .alt | default "" }}" loading="lazy">
+        </div>
+        {{ end }}
+        <div class="post-card-body">
+          {{ with .Params.tags }}
+          <div class="post-card-tags">
+            {{ range . }}<span class="tag-pill">{{ . }}</span>{{ end }}
+          </div>
+          {{ end }}
+          <h2 class="post-card-title">{{ .Title }}</h2>
+          {{ with .Description }}
+          <p class="post-card-desc">{{ . }}</p>
+          {{ end }}
+          <div class="post-card-date">{{ .Date.Format "2006-01-02" }}</div>
+        </div>
+      </a>
       {{ end }}
       {{ end }}
-    </ul>
+    </div>
   </main>
   {{ partial "footer.html" . }}
 </body>
