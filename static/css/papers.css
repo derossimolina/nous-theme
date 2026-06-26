@@ -1,0 +1,186 @@
+.papers-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+  margin-top: 0.5rem;
+}
+
+.paper-card {
+  border: 1px solid var(--border);
+  border-radius: 4px;
+  padding: 1.25rem 1.5rem;
+  transition: border-color 0.2s;
+}
+
+.paper-card:hover {
+  border-color: var(--muted);
+}
+
+.paper-card h2 {
+  font-family: 'Playfair Display', Georgia, serif;
+  font-size: 0.92rem;
+  font-weight: 500;
+  color: var(--bright);
+  line-height: 1.45;
+  margin: 0 0 0.3rem 0;
+  padding: 0;
+  border: none;
+}
+
+.paper-card h2 a {
+  color: inherit;
+  text-decoration: none;
+}
+
+.paper-card h2 a:hover {
+  text-decoration: underline;
+  text-decoration-color: var(--muted);
+  text-underline-offset: 0.15em;
+}
+
+.paper-meta {
+  font-size: 0.76rem;
+  color: var(--muted);
+  font-style: italic;
+  margin-bottom: 0.5rem;
+}
+
+.paper-details {
+  margin-top: 0.35rem;
+}
+
+.paper-details summary {
+  font-size: 0.76rem;
+  font-weight: 400;
+  color: var(--muted);
+  cursor: pointer;
+  list-style: none;
+  padding: 0.2rem 0;
+  transition: color 0.15s;
+  user-select: none;
+}
+
+.paper-details summary::-webkit-details-marker {
+  display: none;
+}
+
+.paper-details summary::before {
+  content: '\25B8\0020';
+  font-size: 0.65rem;
+  vertical-align: middle;
+}
+
+.paper-details[open] summary::before {
+  content: '\25BE\0020';
+}
+
+.paper-details summary:hover {
+  color: var(--bright);
+}
+
+.paper-abstract {
+  font-size: 0.78rem;
+  color: var(--text);
+  line-height: 1.65;
+  margin: 0.35rem 0 0.25rem 0;
+  padding-left: 0.75rem;
+  border-left: 2px solid var(--border);
+}
+
+.paper-abstract strong {
+  color: var(--bright);
+  font-weight: 500;
+}
+
+.citation-block {
+  margin: 0.35rem 0 0.25rem 0;
+}
+
+.citation-tabs {
+  display: flex;
+  gap: 0;
+  border-bottom: 1px solid var(--border);
+  margin-bottom: 0.5rem;
+}
+
+.cite-tab {
+  background: none;
+  border: none;
+  border-bottom: 2px solid transparent;
+  color: var(--muted);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.7rem;
+  padding: 0.25rem 0.6rem;
+  cursor: pointer;
+  letter-spacing: 0.03em;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.cite-tab:hover {
+  color: var(--bright);
+}
+
+.cite-tab.active {
+  color: var(--bright);
+  border-bottom-color: var(--bright);
+}
+
+.cite-text {
+  font-size: 0.74rem;
+  color: var(--text);
+  line-height: 1.55;
+  padding: 0.55rem 0.7rem;
+  background: var(--bg);
+  border: 1px solid var(--border);
+  border-radius: 3px;
+  word-break: break-word;
+}
+
+.cite-actions {
+  margin-top: 0.35rem;
+  display: flex;
+  justify-content: flex-end;
+}
+
+.cite-copy {
+  background: none;
+  border: 1px solid var(--border);
+  color: var(--muted);
+  font-family: 'Lora', Georgia, serif;
+  font-size: 0.68rem;
+  padding: 0.18rem 0.5rem;
+  cursor: pointer;
+  border-radius: 2px;
+  letter-spacing: 0.03em;
+  transition: color 0.15s, border-color 0.15s;
+}
+
+.cite-copy:hover {
+  color: var(--bright);
+  border-color: var(--muted);
+}
+
+.paper-link {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 0.75rem;
+  padding-top: 0.6rem;
+  border-top: 1px solid var(--border);
+}
+
+.paper-link a {
+  font-size: 0.74rem;
+  color: var(--muted);
+  text-decoration: none;
+  transition: color 0.15s;
+  letter-spacing: 0.03em;
+}
+
+.paper-link a:hover {
+  color: var(--bright);
+}
+
+@media (max-width: 520px) {
+  .paper-card { padding: 1rem 1.15rem; }
+  .paper-card h2 { font-size: 0.85rem; }
+}

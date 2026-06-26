@@ -1,0 +1,113 @@
+{{/*
+  Papers layout — renders academic publication cards from front matter data.
+
+  Usage: set `layout: "papers"` in front matter and list papers as YAML:
+
+  ---
+  title: "Papers"
+  layout: "papers"
+  papers:
+    - title: "Title of the article"
+      authors: "Surname, A. B."
+      journal: "Journal Name"
+      volume: 10
+      issue: 2            # optional
+      pages: "30-45"
+      year: 2024
+      doi: "10.xxxx/..."  # optional (preferred over url)
+      url: "https://..."  # fallback when no DOI
+      abstract: "Abstract text. Supports basic HTML like <strong> and <br>."
+  ---
+
+  Citations (APA, ABNT, Chicago, MLA) are generated automatically.
+  Labels adapt to the site language (pt → Portuguese, else → English).
+*/}}
+<!DOCTYPE html>
+<html lang="{{ .Site.LanguageCode }}">
+<head>{{ partial "head.html" . }}
+<link rel="stylesheet" href="/css/papers.css">
+</head>
+<body>
+  {{ partial "header.html" . }}
+  <main class="site-wrap">
+    <article>
+      <div class="post-header">
+        <h1>{{ .Title }}</h1>
+      </div>
+      <div class="post-content">
+        {{ .Content }}
+        {{ $isPt := eq .Site.Language.Lang "pt" }}
+        {{ $lblAbstract := cond $isPt "Resumo" "Abstract" }}
+        {{ $lblCite := cond $isPt "Citar" "Cite" }}
+        {{ $lblCopy := cond $isPt "Copiar" "Copy" }}
+        {{ $lblRead := cond $isPt "Acessar artigo →" "Read paper →" }}
+        <div class="papers-list">
+        {{ range .Params.papers }}
+          {{ $link := .url | default "" }}
+          {{ with .doi }}{{ $link = printf "https://doi.org/%s" . }}{{ end }}
+          {{ $pd := replace .pages "-" "–" }}
+          {{ $ap := split .authors "," }}
+          {{ $abnt := printf "%s,%s" (upper (index $ap 0)) (index $ap 1) }}
+          {{ $auth := .authors | strings.TrimSuffix "." }}
+          {{ $abntClean := $abnt | strings.TrimSuffix "." }}
+          {{ $ttl := .title | strings.TrimSuffix "." }}
+          <div class="paper-card">
+            <h2><a href="{{ $link }}" target="_blank" rel="noopener">{{ .title }}</a></h2>
+            <div class="paper-meta">{{ .journal }} · v. {{ .volume }}{{ with .issue }}, n. {{ . }}{{ end }}, pp. {{ $pd }} · {{ .year }}</div>
+            <details class="paper-details">
+              <summary>{{ $lblAbstract }}</summary>
+              <div class="paper-abstract">{{ .abstract | safeHTML }}</div>
+            </details>
+            <details class="paper-details">
+              <summary>{{ $lblCite }}</summary>
+              <div class="citation-block">
+                <div class="citation-tabs">
+                  <button class="cite-tab active" data-format="apa">APA</button>
+                  <button class="cite-tab" data-format="abnt">ABNT</button>
+                  <button class="cite-tab" data-format="chicago">Chicago</button>
+                  <button class="cite-tab" data-format="mla">MLA</button>
+                </div>
+                <div class="cite-text" data-format="apa">{{ $auth }}. ({{ .year }}). {{ $ttl }}. <em>{{ .journal }}</em>, <em>{{ .volume }}</em>{{ with .issue }}({{ . }}){{ end }}, {{ $pd }}. {{ $link }}</div>
+                <div class="cite-text" data-format="abnt" style="display:none">{{ $abntClean }}. {{ $ttl }}. <strong>{{ .journal }}</strong>, v. {{ .volume }}{{ with .issue }}, n. {{ . }}{{ end }}, p. {{ .pages }}, {{ .year }}. {{ with .doi }}DOI: {{ . }}.{{ else }}Disponível em: {{ $link }}.{{ end }}</div>
+                <div class="cite-text" data-format="chicago" style="display:none">{{ $auth }}. {{ .year }}. "{{ $ttl }}." <em>{{ .journal }}</em> {{ .volume }}{{ with .issue }}, no. {{ . }}{{ end }}: {{ $pd }}. {{ $link }}.</div>
+                <div class="cite-text" data-format="mla" style="display:none">{{ $auth }}. "{{ $ttl }}." <em>{{ .journal }}</em>, vol. {{ .volume }}{{ with .issue }}, no. {{ . }}{{ end }}, {{ .year }}, pp. {{ $pd }}{{ with .doi }}, doi:{{ . }}{{ end }}.</div>
+                <div class="cite-actions"><button class="cite-copy">{{ $lblCopy }}</button></div>
+              </div>
+            </details>
+            <div class="paper-link"><a href="{{ $link }}" target="_blank" rel="noopener">{{ $lblRead }}</a></div>
+          </div>
+        {{ end }}
+        </div>
+      </div>
+    </article>
+  </main>
+  {{ partial "footer.html" . }}
+  <script>
+  document.addEventListener('DOMContentLoaded', function() {
+    document.querySelectorAll('.cite-tab').forEach(function(tab) {
+      tab.addEventListener('click', function() {
+        var block = this.closest('.citation-block');
+        block.querySelectorAll('.cite-tab').forEach(function(t) { t.classList.remove('active'); });
+        this.classList.add('active');
+        var fmt = this.getAttribute('data-format');
+        block.querySelectorAll('.cite-text').forEach(function(t) {
+          t.style.display = t.getAttribute('data-format') === fmt ? 'block' : 'none';
+        });
+      });
+    });
+    document.querySelectorAll('.cite-copy').forEach(function(btn) {
+      btn.addEventListener('click', function() {
+        var block = this.closest('.citation-block');
+        var fmt = block.querySelector('.cite-tab.active').getAttribute('data-format');
+        var text = block.querySelector('.cite-text[data-format="' + fmt + '"]').textContent.trim();
+        navigator.clipboard.writeText(text);
+        var orig = this.textContent;
+        this.textContent = '✓';
+        var that = this;
+        setTimeout(function() { that.textContent = orig; }, 1500);
+      });
+    });
+  });
+  </script>
+</body>
+</html>
