@@ -20,13 +20,17 @@ paginate = 10
       url    = "/posts/"
       weight = 10
     [[languages.pt.menu.main]]
+      name   = "artigos"
+      url    = "/papers/"
+      weight = 20
+    [[languages.pt.menu.main]]
       name   = "ensaios"
       url    = "/essays/"
-      weight = 20
+      weight = 30
     [[languages.pt.menu.main]]
       name   = "sobre"
       url    = "/about/"
-      weight = 30
+      weight = 40
 
   [languages.en]
     languageName = "English"
@@ -40,13 +44,17 @@ paginate = 10
       url    = "/posts/"
       weight = 10
     [[languages.en.menu.main]]
+      name   = "papers"
+      url    = "/papers/"
+      weight = 20
+    [[languages.en.menu.main]]
       name   = "essays"
       url    = "/essays/"
-      weight = 20
+      weight = 30
     [[languages.en.menu.main]]
       name   = "about"
       url    = "/about/"
-      weight = 30
+      weight = 40
 
 [markup.goldmark.renderer]
   unsafe = true

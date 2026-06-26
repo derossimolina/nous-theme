@@ -1,7 +1,8 @@
 ---
 title: "Hello, world"
 date: 2026-01-01
-tags: ["example"]
+tags: ["example", "hugo"]
+description: "A sample post demonstrating the Nous theme with cards, tags, and visual accents."
 ---
 
 This is a sample post to demonstrate the Nous theme.

@@ -1,7 +1,8 @@
 ---
 title: "Olá, mundo"
 date: 2026-01-01
-tags: ["exemplo"]
+tags: ["exemplo", "hugo"]
+description: "Um post de exemplo demonstrando o tema Nous com cards, tags e destaques visuais."
 ---
 
 Este é um post de exemplo para demonstrar o tema Nous.

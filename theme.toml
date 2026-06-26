@@ -1,10 +1,11 @@
 name        = "Nous"
 license     = "MIT"
 licenselink = "https://github.com/derossimolina/nous-theme/blob/main/LICENSE"
-description = "A minimal, typography-first Hugo theme with dark/light modes, multilingual support, cookie consent, and copy attribution."
+description = "A minimal, typography-first Hugo theme with post cards, academic papers layout, dark/light modes, and multilingual support."
 homepage    = "https://github.com/derossimolina/nous-theme"
-tags        = ["minimal", "dark", "light", "multilingual", "blog", "personal", "responsive"]
+tags        = ["minimal", "dark", "light", "multilingual", "blog", "personal", "responsive", "academic", "papers", "cards"]
 min_version = "0.120.0"
+features    = ["dark/light mode", "post cards", "cover images", "academic papers", "auto citations", "multilingual", "cookie consent", "copy attribution"]
 
 [author]
   name     = "J. de Rossi Molina"
