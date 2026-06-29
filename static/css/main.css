@@ -109,6 +109,54 @@ a:hover { color: var(--bright); }
 [data-theme="light"] .icon-sun  { display: none; }
 [data-theme="light"] .icon-moon { display: inline; }
 
+/* ── hamburger / mobile nav ── */
+.nav-toggle {
+  display: none;
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0.5rem;
+}
+
+.nav-toggle-icon,
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  display: block;
+  width: 18px;
+  height: 1.5px;
+  background: var(--muted);
+  position: relative;
+  transition: transform 0.3s, top 0.3s, background 0.2s;
+}
+
+.nav-toggle-icon::before,
+.nav-toggle-icon::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  width: 100%;
+}
+
+.nav-toggle-icon::before { top: -6px; }
+.nav-toggle-icon::after  { top: 6px; }
+
+.nav-toggle:hover .nav-toggle-icon,
+.nav-toggle:hover .nav-toggle-icon::before,
+.nav-toggle:hover .nav-toggle-icon::after { background: var(--bright); }
+
+.site-header.nav-open .nav-toggle-icon { background: transparent; }
+.site-header.nav-open .nav-toggle-icon::before { top: 0; transform: rotate(45deg); }
+.site-header.nav-open .nav-toggle-icon::after  { top: 0; transform: rotate(-45deg); }
+
+.lang-switcher {
+  display: inline-flex;
+  align-items: center;
+  margin-left: 0.5rem;
+  padding-left: 0.5rem;
+  border-left: 1px solid currentColor;
+  gap: 0.5rem;
+}
+
 /* ── home intro ── */
 .home-intro {
   padding-bottom: 2.5rem;
@@ -447,9 +495,48 @@ a:hover { color: var(--bright); }
 }
 
 /* ── responsive ── */
+@media (max-width: 768px) and (orientation: portrait) {
+  .nav-toggle { display: block; }
+
+  .site-header { position: relative; }
+
+  .site-header nav {
+    display: none;
+    position: absolute;
+    top: 100%;
+    left: 0;
+    right: 0;
+    background: var(--bg);
+    border-bottom: 1px solid var(--border);
+    padding: 0 1.5rem 1rem;
+    z-index: 1000;
+  }
+
+  .site-header.nav-open nav { display: block; }
+
+  .site-nav {
+    flex-direction: column;
+    gap: 0;
+    align-items: flex-start;
+  }
+
+  .site-nav li {
+    width: 100%;
+    padding: 0.6rem 0;
+    border-bottom: 1px solid var(--border);
+  }
+
+  .site-nav li:last-child { border-bottom: none; }
+
+  .site-nav .lang-switcher {
+    margin-left: 0;
+    padding-left: 0;
+    border-left: none;
+  }
+}
+
 @media (max-width: 520px) {
   .post-list-item { flex-direction: column; gap: 0.1rem; }
-  .site-nav { gap: 1rem; }
   .post-card-cover { height: 140px; }
   .post-card-body { padding: 0.85rem 1rem; }
 }
